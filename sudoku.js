@@ -3,8 +3,25 @@
  * Возвращает игровое поле после попытки его решить.
  * Договорись со своей командой, в каком формате возвращать этот результат.
  */
+const size = 9;
+const boxSize = 3;
+
 function solve(boardString) {
-}
+  let newArr = boardString.split("");
+  let board = [];
+  for (let i = 0; i < newArr.length; i += 9) {
+    const arrBoard = newArr.slice(i, i + 9);
+    board.push(arrBoard);
+  }
+  const findEmty = (board) => {
+    for (let i = 0; i < size; i++) {
+      for (let j = 0; j < size; j++) {
+        if (board[i][j] === ".") return [i][j];
+      }
+    }
+  };
+  return null;
+}``
 
 /**
  * Принимает игровое поле в том формате, в котором его вернули из функции solve.
@@ -20,8 +37,17 @@ function isSolved(board) {
  * Подумай, как симпатичнее сформировать эту строку.
  */
 function prettyBoard(board) {
-
+  const findEmty = (board) => {
+    for (let i = 0; i < size; i++) {
+      for (let j = 0; j < size; j++) {
+        if (board[i][j] === ".") return [i][j];
+      }
+    }
+  };
+  return null;
 }
+
+console.log(prettyBoard());
 
 // Экспортировать функции для использования в другом файле (например, readAndSolve.js).
 module.exports = {
