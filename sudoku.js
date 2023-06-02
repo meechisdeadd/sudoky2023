@@ -3,7 +3,54 @@
  * Возвращает игровое поле после попытки его решить.
  * Договорись со своей командой, в каком формате возвращать этот результат.
  */
-function solve(boardString) {}
+
+//создаём двумерный массив
+
+let peremennaya = `1-58-2----9--764-52--4--819-19--73-6762-83-9-----61-5---76---3-43--2-5-16--3-89--`;
+
+function matrix(str) {
+  let newArr = str.split("");
+  let arr = [];
+  for (let i = 0; i < newArr.length; i += 9) {
+    const r = newArr.slice(i, i + 9);
+    arr.push(r);
+  }
+  console.log(arr);
+}
+matrix(peremennaya);
+
+// возвращает массив возможных значений
+function getPossibleValues(coordinates, board) {
+    let [r, c] = coordinates;
+  
+    let digits = {
+      1: '1',
+      2: '2',
+      3: '3',
+      4: '4',
+      5: '5',
+      6: '6',
+      7: '7',
+      8: '8',
+      9: '9',
+    };
+}
+
+function solve(boardString) {
+  
+  
+
+  
+
+
+  // создаём рекурсивную функцию
+  const solve = () => {
+    const currPos = findEmpty(boardString)  
+  }
+  solve();
+  return board;
+}
+
 
 /**
  * Принимает игровое поле в том формате, в котором его вернули из функции solve.
@@ -37,6 +84,7 @@ function isSolved(board) {
   }
   return true;
 }
+
 /**
  * Принимает игровое поле в том формате, в котором его вернули из функции solve.
  * Возвращает строку с игровым полем для последующего вывода в консоль.
