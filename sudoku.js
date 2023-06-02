@@ -3,6 +3,7 @@
  * Возвращает игровое поле после попытки его решить.
  * Договорись со своей командой, в каком формате возвращать этот результат.
  */
+
 //создаём двумерный массив
 
 let peremennaya = `1-58-2----9--764-52--4--819-19--73-6762-83-9-----61-5---76---3-43--2-5-16--3-89--`;
@@ -50,11 +51,39 @@ function solve(boardString) {
   return board;
 }
 
+
 /**
  * Принимает игровое поле в том формате, в котором его вернули из функции solve.
  * Возвращает булевое значение — решено это игровое поле или нет.
  */
-function isSolved(board) {}
+function isSolved(board) {
+  if (board.flat().includes(0)) {
+    return false;
+  }
+  for (let i = 0; i < 9; i++) {
+    if (
+      new Set(board[i]).size !== 9 ||
+      new Set(board.map((row) => row[i])).size !== 9
+    ) {
+      return false;
+    }
+  }
+  // Проверка уникальности цифр в квадратах 3x3
+  for (let i = 0; i < 9; i += 3) {
+    for (let j = 0; j < 9; j += 3) {
+      let square = [];
+      for (let k = i; k < i + 3; k++) {
+        for (let l = j; l < j + 3; l++) {
+          square.push(board[k][l]);
+        }
+      }
+      if (new Set(square).size !== 9) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
 
 /**
  * Принимает игровое поле в том формате, в котором его вернули из функции solve.
